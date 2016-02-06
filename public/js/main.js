@@ -17,16 +17,17 @@ myShakeEvent.start();
 
 function stopShake(){
     shakeEvent.stop();
+    shaking.html("this is not shaking");
 }
 
 window.addEventListener('shake', function(){
 
   shaking.html("this is shaking");
 
-  var r = getRandomInt(0, 255);
-  var g = getRandomInt(0, 255);
-  var b = getRandomInt(0, 255);
-  element.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
+  // var r = getRandomInt(0, 255);
+  // var g = getRandomInt(0, 255);
+  // var b = getRandomInt(0, 255);
+  // element.style.backgroundColor = ("rgb(" + r + "," + g + "," + b + ")");
 
   stopShake();
 
