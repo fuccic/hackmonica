@@ -10,32 +10,31 @@ var element = $("#box");
 
 var myShakeEvent = new Shake({
     threshold: 15, // optional shake strength threshold
-    timeout: 1000 // optional, determines the frequency of event generation
+    timeout: 10 // optional, determines the frequency of event generation
 });
 
 myShakeEvent.start();
 
 
-
+var counter = 0;
 window.addEventListener('shake', function(){
-
   shaking.html("shaking");
+  console.log('SHAKE');
 
-  // var r = getRandomInt(0, 255);
-  // var g = getRandomInt(0, 255);
-  // var b = getRandomInt(0, 255);
-  // element.style.backgroundColor = ("rgb(" + r + "," + g + "," + b + ")");
-
-  stopShake();
-
+  counter +=1;
 }, false);
+
+// var intervalCounter = 0;
+setInterval(function() {
+	if (counter > 1) {
+		console.log('we had a shake');
+	}
+	counter = 0;
+
+}, 500);
 
 shaking.html("not");
 
-function stopShake(){
-    shakeEvent.stop();
-
-}
 
 // jquery debounce or throttle
 
