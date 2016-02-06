@@ -38,7 +38,9 @@ io.on('connection', function(socket) {
 	
 	console.log(idArray);
 
-	io.emit('user connection', connected_users, userid, idArray);
+	var starter = false;
+
+	io.emit('user connection', connected_users, userid, idArray, starter);
 
 
 	socket.on('disconnect', function() {

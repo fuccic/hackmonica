@@ -98,10 +98,7 @@ MIDI.loadPlugin({
 
 
 
-var startMusicButton = $('#start');
-startMusicButton.click(function(){
 
-});
 // jquery debounce or throttle
 
 // var body = $('body');
@@ -128,15 +125,23 @@ var socket = io();
 var instrumentArray = ['chorus', 'drums', 'guitar', 'melody', 'tamb'];
 
 
-socket.on('user connection', function(usr_num, userid, idArray) {
+socket.on('user connection', function(usr_num, userid, idArray, starter) {
 	console.log(userid);
+	console.log(starter);
 	var player = idArray.indexOf(userid);
 	console.log(player);
+
+	var startMusicButton = $('#start');
+		startMusicButton.click(function(){
+			starter = true;
+			console.log(starter);
+	});
 
 	var randomNum = Math.floor((Math.random() * 5) + 1);
 
 	if (usr_num < 6) {
 		$('#users-connected').text('There are ' + usr_num + ' band members! ' + instrumentArray[usr_num - 1]);
+
 	}
 
 	else {
