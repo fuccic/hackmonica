@@ -18,3 +18,22 @@ app.use(express.static('public'));
 
 http.listen(port);
 
+// ==========
+// SOCKET
+// ==========
+
+var connected_users = 0;
+
+io.on('connection', function(socket) {
+
+	connected_users += 1;
+
+	io.emit('user connection', connected_users);
+
+
+	socket.on('disconnect', function() {
+		connected_users -= 1;
+		io.emit('user connection', connected_users);
+	});
+
+});
