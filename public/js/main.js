@@ -1,5 +1,7 @@
 console.log("hieeeeee");
 
+window.onload = function() {
+
 var shaking = $("#shaking");
 shaking.innerHTML = "this is not shaking";
 
@@ -53,3 +55,5 @@ function stopShake(){
 //     .mousemove( $.debounce( 250, false, function(e){
 //         body.removeClass( 'moving' );
 //     }));
+
+}
