@@ -31,12 +31,14 @@ io.on('connection', function(socket) {
 	connected_users += 1;
 
 	var userid = socket.id;
+
+	console.log(userid);
 	
 	idArray.push(userid);
 	
 	console.log(idArray);
 
-	io.emit('user connection', connected_users);
+	io.emit('user connection', connected_users, userid, idArray);
 
 
 	socket.on('disconnect', function() {
