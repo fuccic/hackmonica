@@ -28,7 +28,9 @@ io.on('connection', function(socket) {
 
 	connected_users += 1;
 
-	io.emit('user connection', connected_users);
+	var userid = socket.id;
+
+	io.emit('user connection', connected_users, userid);
 
 
 	socket.on('disconnect', function() {
