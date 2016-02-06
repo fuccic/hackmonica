@@ -1,0 +1,12 @@
+.resizing { background: #afa; }
+.moving { background: #aaf; }
+
+div {
+    display: none;
+    margin-top: 1em;
+}
+
+.resizing #resize,
+.moving #mousemove {
+    display: block;
+}
