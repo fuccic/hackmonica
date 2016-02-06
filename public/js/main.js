@@ -1,7 +1,7 @@
 console.log("hieeeeee");
 
-var shaking = document.getElementById("shaking");
-shaking.innerHTML = ("this is not shaking");
+var shaking = $("#shaking");
+shaking.innerHTML = "this is not shaking";
 
 var myShakeEvent = new Shake({
     threshold: 15, // optional shake strength threshold
@@ -10,9 +10,10 @@ var myShakeEvent = new Shake({
 
 myShakeEvent.start();
 
-window.addEventListener('shake', function()
+window.addEventListener('myShakeEvent', function(){
 
-  shaking.innerHTML = ("this is shaking");
+var shaking = $("#shaking");
+  shaking.innerHTML = "this is shaking";
 
 var element = document.getElementById("box");
 var r = getRandomInt(0, 255);
@@ -20,14 +21,14 @@ var g = getRandomInt(0, 255);
 var b = getRandomInt(0, 255);
   element.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
 
-, false);
+}, false);
 
 //function to call when shake occurs
 // function shakeEventDidOccur () {
 
     //put your own code here etc.
     // alert('shake!');
-)};
+
 
 function stopShake(){
     shakeEvent.stop();
