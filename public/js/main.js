@@ -15,6 +15,10 @@ var myShakeEvent = new Shake({
 
 myShakeEvent.start();
 
+function stopShake(){
+    shakeEvent.stop();
+}
+
 window.addEventListener('shake', function(){
 
   shaking.html("this is shaking");
@@ -24,18 +28,11 @@ window.addEventListener('shake', function(){
   var b = getRandomInt(0, 255);
   element.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
 
+  stopShake();
+
 }, false);
 
-//function to call when shake occurs
-// function shakeEventDidOccur () {
 
-    //put your own code here etc.
-    // alert('shake!');
-
-
-function stopShake(){
-    shakeEvent.stop();
-}
 
 // jquery debounce or throttle
 
