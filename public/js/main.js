@@ -10,7 +10,7 @@ var myShakeEvent = new Shake({
 
 myShakeEvent.start();
 
-window.addEventListener('myShakeEvent', function(){
+window.addEventListener('shake', function(){
 
 var shaking = $("#shaking");
   shaking.innerHTML = "this is shaking";
