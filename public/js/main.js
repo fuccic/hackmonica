@@ -1,9 +1,8 @@
 console.log("hieeeeee");
-
 window.onload = function() {
 
 var shaking = $("#shaking");
-shaking.innerHTML = "this is not shaking";
+shaking.html = "this is not shaking";
 
 var myShakeEvent = new Shake({
     threshold: 15, // optional shake strength threshold
@@ -14,8 +13,7 @@ myShakeEvent.start();
 
 window.addEventListener('shake', function(){
 
-var shaking = $("#shaking");
-  shaking.innerHTML = "this is shaking";
+  shaking.html = "this is shaking";
 
 var element = document.getElementById("box");
 var r = getRandomInt(0, 255);
