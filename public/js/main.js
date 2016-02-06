@@ -6,7 +6,6 @@ var myShakeEvent = new Shake({
     timeout: 1000 // optional, determines the frequency of event generation
 });
 
-//stop listening
 function stopShake(){
     shakeEvent.stop();
 }
@@ -17,15 +16,20 @@ window.addEventListener('shake', shakeEventDidOccur, false);
 
 //function to call when shake occurs
 function shakeEventDidOccur () {
-  var element = document.getElementById("box");
-  var r = getRandomInt(0, 255);
-  var g = getRandomInt(0, 255);
-  var b = getRandomInt(0, 255);
+
+  var shaking = document.getElementById("shaking");
+    shaking.innerHTML = ("this is shaking");
+
+	var element = document.getElementById("box");
+	var r = getRandomInt(0, 255);
+	var g = getRandomInt(0, 255);
+	var b = getRandomInt(0, 255);
     element.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
+
     //put your own code here etc.
-    alert('shake!');
-    stopShake();
+    // alert('shake!');
 }
+
 
 // jquery debounce or throttle
 
