@@ -1,0 +1,25 @@
+{
+  "name": "hackmonica",
+  "version": "1.0.0",
+  "description": "not a phone harmonica",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ericseandevlin/hackmonica.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ericseandevlin/hackmonica/issues"
+  },
+  "homepage": "https://github.com/ericseandevlin/hackmonica#readme",
+  "dependencies": {
+    "express": "^4.13.4",
+    "midi": "^0.9.4",
+    "shake.js": "^1.2.2",
+    "socket.io": "^1.4.5"
+  }
+}
