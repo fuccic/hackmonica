@@ -10,7 +10,7 @@ var element = $("#box");
 
 var myShakeEvent = new Shake({
     threshold: 15, // optional shake strength threshold
-    timeout: 10 // optional, determines the frequency of event generation
+    timeout: 500 // optional, determines the frequency of event generation
 });
 
 myShakeEvent.start();
@@ -25,38 +25,11 @@ window.addEventListener('shake', function(){
 }, false);
 
 // var intervalCounter = 0;
-setInterval(function() {
-	if (counter > 1) {
-		console.log('we had a shake');
-	}
-	counter = 0;
 
-}, 500);
 
 shaking.html("not");
 
-MIDI.loadPlugin({
-		soundfontUrl: "soundfonts/",
-		instrument: "acoustic_grand_piano",
-		onprogress: function(state, progress) {
-			console.log(state, progress);
-		},
-		onsuccess: function() {
 
-			MIDI.setVolume(0, 127);
-
-			var file = 'midi/guitar.mid';
-			// var player = MIDI.Player;
-
-			var callback = function() {
-				console.log('midi file playing?');
-				MIDI.Player.start()
-			}
-
-			MIDI.Player.loadFile(file, callback);
-
-		}
-	});
 
 // MIDI.loadPlugin({
 // 	soundfontUrl: "soundfont/",
@@ -128,12 +101,15 @@ var socket = io();
 var instrumentArray = ['chorus', 'drums', 'guitar', 'melody', 'tamb'];
 
 
+var inst;
 socket.on('user connection', function(usr_num, userid, idArray) {
 	console.log(userid);
 	var player = idArray.indexOf(userid);
 	console.log(player);
 
 	var randomNum = Math.floor((Math.random() * 5) + 1);
+
+	inst = instrumentArray[usr_num - 1];
 
 	if (usr_num < 6) {
 		$('#users-connected').text('There are ' + usr_num + ' band members! ' + instrumentArray[usr_num - 1]);
@@ -143,6 +119,53 @@ socket.on('user connection', function(usr_num, userid, idArray) {
 		$('#users-connected').text('There are ' + usr_num + ' band members! ' + instrumentArray[randomNum]);
 	}
 	
+
+	MIDI.loadPlugin({
+			soundfontUrl: "soundfonts/",
+			instrument: "acoustic_grand_piano",
+			onprogress: function(state, progress) {
+				console.log(state, progress);
+			},
+			onsuccess: function() {
+
+				MIDI.setVolume(0, 127);
+
+				var file = 'midi/' + inst + '.mid';
+				// var player = MIDI.Player;
+
+				var callback = function() {
+					console.log('midi file ready');
+					MIDI.Player.start();
+
+				}
+
+				MIDI.Player.loadFile(file, callback);
+
+			}
+	});
+
+	setInterval(function() {
+		if (counter > 0) {
+			console.log('we had a shake');
+			for (var n = 0; n < 16; n++) {
+			    MIDI.setVolume(n, 127);
+			}
+
+			// MIDI.setVolume(0, 127);
+			
+		} else {
+			for (var n = 0; n < 16; n++) {
+			    MIDI.setVolume(n, 1);
+			}
+			// MIDI.setVolume(0, 1);
+
+		}
+
+		counter = 0;
+
+	}, 1000);
+
+
 	
 
 });
