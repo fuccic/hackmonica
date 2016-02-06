@@ -10,19 +10,16 @@ var element = $("#box");
 
 var myShakeEvent = new Shake({
     threshold: 15, // optional shake strength threshold
-    timeout: 1 // optional, determines the frequency of event generation
+    timeout: 1000 // optional, determines the frequency of event generation
 });
 
 myShakeEvent.start();
 
-function stopShake(){
-    shakeEvent.stop();
-    shaking.html("this is not shaking");
-}
+
 
 window.addEventListener('shake', function(){
 
-  shaking.html("this is shaking");
+  shaking.html("shaking");
 
   // var r = getRandomInt(0, 255);
   // var g = getRandomInt(0, 255);
@@ -33,7 +30,12 @@ window.addEventListener('shake', function(){
 
 }, false);
 
+shaking.html("not");
 
+function stopShake(){
+    shakeEvent.stop();
+
+}
 
 // jquery debounce or throttle
 
