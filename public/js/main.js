@@ -6,6 +6,8 @@ console.log(shaking);
 
 shaking.html("this is not shaking");
 
+var element = $("#box");
+
 var myShakeEvent = new Shake({
     threshold: 15, // optional shake strength threshold
     timeout: 1000 // optional, determines the frequency of event generation
@@ -17,10 +19,9 @@ window.addEventListener('shake', function(){
 
   shaking.html("this is shaking");
 
-var element = document.getElementById("box");
-var r = getRandomInt(0, 255);
-var g = getRandomInt(0, 255);
-var b = getRandomInt(0, 255);
+  var r = getRandomInt(0, 255);
+  var g = getRandomInt(0, 255);
+  var b = getRandomInt(0, 255);
   element.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
 
 }, false);
